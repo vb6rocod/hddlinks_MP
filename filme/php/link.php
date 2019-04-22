@@ -973,6 +973,12 @@ require_once("JavaScriptUnpacker.php");
   preg_match_all('/[file:"]([http|https][\.\d\w\-\.\/\\\:\?\&\#\%\_\,]*(\.mp4))/', $out, $m);
   //print_r ($m);
   $link=$m[1][count($m[1]) -1];
+  if (preg_match('/([http|https]?[\.\d\w\-\.\/\\\:\?\&\#\%\_\,]*(\.(srt|vtt)))/', $out, $s)) {
+  $srt=$s[1]; if (strpos($srt,"http") === false) $srt="https://fastplay.to".$srt;
+   $l_srt="http://127.0.0.1/cgi-bin/scripts/util/srt_xml.php?file=".urlencode($srt);
+   //echo $l_srt;
+   $h_srt=file_get_contents($l_srt);
+  }
   /*
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $link);
