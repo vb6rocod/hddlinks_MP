@@ -635,7 +635,8 @@ foreach($videos as $video) {
   //$t1=explode("var vs =",$html);
   //$t2=explode("'",$t1[1]);
   //$html .=base64_decode($t2[1]);
-} elseif (strpos($filelink,"filmeonline2016.biz") !== false) {
+} elseif (strpos($filelink,"filmeonline2016.biz") !== false || strpos($filelink,"filmeonline.st") !== false) {
+  /*
   $ch = curl_init($filelink);
   curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 GTB5');
   curl_setopt($ch,CURLOPT_REFERER,"http://www.filmeonline2016.biz/");
@@ -648,6 +649,12 @@ foreach($videos as $video) {
   //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
   $html = curl_exec($ch);
   curl_close ($ch);
+  */
+$ua="Mozilla/5.0 (Windows NT 10.0; rv:55.0) Gecko/20100101 Firefox/55.0";
+$exec_path="/usr/local/bin/Resource/www/cgi-bin/scripts/wget ";
+$exec = '-q -U "'.$ua.'"  --no-check-certificate "'.$filelink.'" -O -';
+$exec = $exec_path.$exec;
+$html=shell_exec($exec);
   //echo $html;
 $videos = explode('atob("', $html);
 unset($videos[0]);
