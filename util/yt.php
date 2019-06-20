@@ -77,14 +77,12 @@ foreach ($videos as $video) {
 	//sparams
 
     //$out=str_replace("sig=","signature=",$output['url']);
-    $out=$output['url'];
-	if (isset($output['sig'])) {
-		$signature=($output['sig']);
-
+    if (!isset($output['s'])) {
+       $r=$output['url'];
 	} else {
   $sA="";
   $s=$output["s"];
-  //echo $s;
+  $tip=$output["sp"];
   $l = "https://s.ytimg.com".$parts['assets']['js'];
   //echo $l;
   $ch = curl_init();
@@ -155,8 +153,9 @@ foreach ($videos as $video) {
     }
   }
   $signature = $sA;
+  $r=$output['url']."&".$tip."=".$signature;
 }
-$link=$out."&signature=".$signature;
+$link=$r;
 if ($html) {
 $out='#!/bin/sh
 cat <<EOF
