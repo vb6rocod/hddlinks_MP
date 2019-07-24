@@ -177,7 +177,7 @@ if ($tip=="search") {
  //http://filmehd.net/page/3?s=who+am+I
    $tit="Cautare: ".$search;
    $search1=str_replace(" ","+",$search);
-   $l="https://filmehd.net/page/".$page."?s=".$search1;
+   $l="https://filmehd.se/page/".$page."?s=".$search1;
 } else {
    $l=$search."/page/".$page;
 }

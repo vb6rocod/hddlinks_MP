@@ -688,7 +688,7 @@ foreach($videos as $video) {
  $h=shell_exec($exec);
  $html .=$h;
 }
-} elseif (strpos($filelink,"filmehd.net") !== false) {
+} elseif (strpos($filelink,"filmehd.se") !== false) {
 $ua="Mozilla/5.0 (Windows NT 10.0; rv:55.0) Gecko/20100101 Firefox/55.0";
 $exec_path="/usr/local/bin/Resource/www/cgi-bin/scripts/wget ";
 $exec = '-q -U "'.$ua.'" --referer="'.$filelink.'" --no-check-certificate "'.$filelink.'" -O -';
