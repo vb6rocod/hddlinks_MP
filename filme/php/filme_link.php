@@ -656,15 +656,20 @@ $exec = '-q -U "'.$ua.'"  --no-check-certificate "'.$filelink.'" -O -';
 $exec = $exec_path.$exec;
 $html=shell_exec($exec);
   //echo $html;
-$videos = explode('atob("', $html);
-unset($videos[0]);
-$videos = array_values($videos);
-foreach($videos as $video) {
-  $t1=explode('"',$video);
-  //echo base64_decode($t1[0]);
-  $h='"'.base64_decode($t1[0]).'" ';
- $html .=$h;
-}
+  if (preg_match("/script src\=\"(.*?)\" data\-minify/ms",$html,$m)) {
+$exec = '-q -U "'.$ua.'"  --no-check-certificate "'.$m[1].'" -O -';
+$exec = $exec_path.$exec;
+$h2=shell_exec($exec);
+  $videos = explode('atob("', $h2);
+  unset($videos[0]);
+  $videos = array_values($videos);
+  foreach($videos as $video) {
+   $t1=explode('"',$video);
+   //echo base64_decode($t1[0]);
+   $h='"'.base64_decode($t1[0]).'" ';
+   $html .=$h;
+  }
+ }
 } elseif (strpos($filelink,"topfilmeonline.net") !== false) {
 $ua="Mozilla/5.0 (Windows NT 5.1; rv:52.0) Gecko/20100101 Firefox/52.0";
 $exec_path="/usr/local/bin/Resource/www/cgi-bin/scripts/wget ";

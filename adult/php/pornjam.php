@@ -265,7 +265,7 @@ foreach($videos as $video) {
     $link = "https://www.pornjam.com".$t2[0];
 
     //http://img02.redtubefiles.com/_thumbs/0000350/0350855/0350855_009m.jpg
-    $t1 = explode('src="', $video);
+    $t1 = explode('data-src="', $video);
     $t2 = explode('"', $t1[1]);
     $image = $t2[0];
     if (strpos($image,"http") === false) $image="http:".$image;

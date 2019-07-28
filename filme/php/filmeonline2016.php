@@ -249,8 +249,8 @@ foreach($videos as $video) {
   $t=$t1[0];
   $t=preg_replace("/\(?((1|2)\d{3})\)?/","",$t);
   $tit3=trim($t);
-  $t1 = explode('src="', $video);
-  $t2 = explode('"', $t1[1]);
+  $t1=explode('srcset="',$video);
+  $t2=explode(' ',$t1[1]);
   $image = $t2[0];
   $image=str_replace("https","http",$image);
   $t1=explode('<p>',$video);
