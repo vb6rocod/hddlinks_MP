@@ -706,7 +706,7 @@ unset($videos[0]);
 $videos = array_values($videos);
 foreach($videos as $video) {
   $t1=explode('"',$video);
-  $l2="https://filmehd.net".$t1[0];
+  $l2="https://filmehd.se".$t1[0];
   //echo $l2;
 $ua="Mozilla/5.0 (Windows NT 10.0; rv:55.0) Gecko/20100101 Firefox/55.0";
 $exec_path="/usr/local/bin/Resource/www/cgi-bin/scripts/wget ";
